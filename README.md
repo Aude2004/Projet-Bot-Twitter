@@ -21,7 +21,6 @@ twitter_bot/
 │   └── twitter_bot.rb       # Méthodes du bot
 ├── spec/
 │   └── twitter_bot_spec.rb  # Tests RSpec
-├── run.rb                   # Fichier principal d'exécution
 ├── Gemfile                  # Dépendances
 └── .env                     # Variables d'environnement (non versionné)
 ```
@@ -89,12 +88,7 @@ tweet_to_journalists([
 
 # Streaming en live (optionnel)
 # live_stream("#hello_world")
-```
 
-Puis exécutez :
-```bash
-ruby run.rb
-```
 
 ---
 

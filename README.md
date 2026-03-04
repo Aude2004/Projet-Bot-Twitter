@@ -1,105 +1,121 @@
+# 🐦 Twitter Bot — `#hello_world`
 
-# Bot Twitter #hello_world
-
-Un bot Twitter en **Ruby** permettant d'automatiser certaines interactions sur Twitter : envoyer des tweets, liker, suivre des comptes, et interagir avec des hashtags ou des journalistes.  
-
----
-
-## Fonctionnalités
-
-- **Envoyer un tweet** (`send_tweet`)  
-- **Tweeter à 5 journalistes aléatoires** (`tweet_to_journalists`)  
-- **Liker les derniers tweets d’un hashtag** (`like_latest`)  
-- **Suivre les derniers comptes ayant tweeté un hashtag** (`follow_latest`)  
-- **Streaming en live** pour liker et suivre automatiquement les tweets en direct (`live_stream`) — optionnel  
+Un bot Twitter en **Ruby** permettant d'automatiser certaines interactions sur Twitter : envoyer des tweets, liker, suivre des comptes, et interagir avec des hashtags ou des journalistes.
 
 ---
 
-## Installation
+## ✨ Fonctionnalités
 
-1. Cloner le dépôt :  
+- **`send_tweet`** — Envoyer un tweet
+- **`tweet_to_journalists`** — Tweeter à 5 journalistes aléatoires
+- **`like_latest`** — Liker les derniers tweets d'un hashtag
+- **`follow_latest`** — Suivre les derniers comptes ayant tweeté un hashtag
+- **`live_stream`** *(optionnel)* — Streaming en live pour liker et suivre automatiquement les tweets en direct
+
+---
+
+## 📁 Structure du projet
+```
+twitter_bot/
+├── lib/
+│   └── twitter_bot.rb       # Méthodes du bot
+├── spec/
+│   └── twitter_bot_spec.rb  # Tests RSpec
+├── run.rb                   # Fichier principal d'exécution
+├── Gemfile                  # Dépendances
+└── .env                     # Variables d'environnement (non versionné)
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Cloner le dépôt
 ```bash
 git clone https://github.com/<votre-utilisateur>/twitter_bot.git
 cd twitter_bot
+```
 
-Installer les dépendances :
-
+### 2. Installer les dépendances
+```bash
 bundle install
+```
 
-Gems utilisées :
+Gems utilisées : `twitter`, `dotenv`, `rspec`
 
-twitter
+---
 
-dotenv
+## 🔐 Configuration
 
-rspec (pour les tests)
-
-Configuration
-
-Créer un fichier .env à la racine :
-
+### 1. Créer le fichier `.env` à la racine du projet
+```env
 TWITTER_CONSUMER_KEY=xxxxxx
 TWITTER_CONSUMER_SECRET=xxxxxx
 TWITTER_ACCESS_TOKEN=xxxxxx
 TWITTER_ACCESS_TOKEN_SECRET=xxxxxx
+```
 
-**2.Remplacer xxxxxx par vos clés Twitter obtenues depuis le Twitter Developer Portal**
+### 2. Obtenir vos clés API
 
+Rendez-vous sur le [Twitter Developer Portal](https://developer.twitter.com/) pour générer vos clés et remplacer les `xxxxxx` ci-dessus.
 
-**3.Utilisation**
+> ⚠️ Ne committez jamais votre fichier `.env`. Ajoutez-le à votre `.gitignore`.
 
-Créer un fichier run.rb pour exécuter le bot :
+---
 
+## 🚀 Utilisation
+
+Créez un fichier `run.rb` et configurez les actions souhaitées :
+```ruby
 require_relative 'lib/twitter_bot'
 
 # Envoyer un tweet de bienvenue
 send_tweet("Bonjour Twitter ! #hello_world")
 
-# Liker et suivre les tweets avec un hashtag
+# Liker les tweets du hashtag
 like_latest("#hello_world")
+
+# Suivre les comptes du hashtag
 follow_latest("#hello_world")
 
 # Tweeter à 5 journalistes aléatoires
-tweet_to_journalists(["@journaliste1", "@journaliste2", "@journaliste3", "@journaliste4", "@journaliste5"])
+tweet_to_journalists([
+  "@journaliste1",
+  "@journaliste2",
+  "@journaliste3",
+  "@journaliste4",
+  "@journaliste5"
+])
 
 # Streaming en live (optionnel)
 # live_stream("#hello_world")
+```
 
-Exécuter :
-
+Puis exécutez :
+```bash
 ruby run.rb
-Tests
+```
 
-Pour exécuter les tests :
+---
 
+## 🧪 Tests
+```bash
 rspec
+```
 
-Les tests couvrent :
+Couverture : envoi de tweets, interaction avec les journalistes, like et follow automatique, streaming en live.
 
-Envoi de tweets
+---
 
-Interaction avec les journalistes
+## 🤝 Contributions
 
-Like et follow automatique
+Les contributions sont les bienvenues ! Quelques idées :
 
-Streaming en live
+- Ajouter des fonctionnalités (retweets, réponses automatiques…)
+- Gérer plusieurs hashtags ou listes d'utilisateurs
+- Améliorer les logs et la robustesse
 
-Structure du projet
-twitter_bot/
-│
-├─ lib/
-│   └─ twitter_bot.rb      # Méthodes du bot
-├─ spec/
-│   └─ twitter_bot_spec.rb # Tests RSpec
-├─ run.rb                  # Fichier principal pour exécuter le bot
-├─ Gemfile                 # Dépendances
-└─ .env                    # Variables d'environnement
-Contributions
+Ouvrez une *issue* ou soumettez une *pull request*.
 
-Contributions bienvenues pour :
+---
 
-Ajouter des fonctionnalités supplémentaires (retweets, réponses automatiques…)
-
-Gérer plusieurs hashtags ou utilisateurs
-
-Améliorer les logs et la robustesse
